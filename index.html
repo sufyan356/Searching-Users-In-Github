@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Searching Users in Github</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <!-- NAVBAR  -->
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Searching Users in Github</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="d-flex justify-content-flex-end" role="search"  id="formSubmission">
+                  <input  class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchUsersName">
+                  <button class="btn btn-outline-success" type="submit" id="submitBtn">Search</button>
+                </form>
+              </div>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- MAIN  -->
+    <main>
+        <section id="usersCard">
+            <div class="card" style="width: 18rem;">
+                <img id = "usersImage" class="card-img-top img-fluid" >
+                <!-- <img id = "usersImage" src= " data:image/jpeg;base64,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" class="card-img-top img-fluid" alt="..."> -->
+                <div class="card-body">
+                  <h5 class="card-title" id="username"></h5>
+                  <div id="followContainer">
+                    <div id="partOne">
+                        <span class="card-text" >Followers</span>
+                        <span id="followers">0</span>
+                    </div>
+                   <div id="partTwo">
+                    <span class="card-text">Following</span>
+                    <span id="following">0</span>
+                   </div>
+
+                    <div id="partThree">
+                        <span class="card-text">Repos</span>
+                        <span id="repo">0</span>
+                    </div>
+                  </div>
+                 
+                  <a href="#" class="btn btn-primary" id="viewOnGithub">VIEW ON GITHUB</a>
+                </div>
+              </div>
+        </section>
+    </main>
+    
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
